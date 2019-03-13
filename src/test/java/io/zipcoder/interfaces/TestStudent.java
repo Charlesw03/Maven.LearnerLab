@@ -8,7 +8,7 @@ public class TestStudent {
     public void testImplementation() {
         //given when then
         Student stu = new Student(333l);
-        Assert.assertTrue(stu instanceof LearnerInterface);
+        Assert.assertTrue(stu instanceof Learner);
 
 
     }
