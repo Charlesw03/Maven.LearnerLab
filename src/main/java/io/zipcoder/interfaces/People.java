@@ -1,30 +1,35 @@
 package io.zipcoder.interfaces;
 
+import java.lang.reflect.Array;
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class People {
+public abstract class People<T extends Person> {
     private Long id;
 
-    List<Person> personList = new ArrayList<>();
+    List<T> personList = new ArrayList<>();
 
-    public void add(Person person) {
+
+    public void add(T person) {
         personList.add(person);
     }
 
-    public Person findById(Long id) throws Exception {
-        for (Person pers : personList) {
-            if (pers.getId() == id) {
+    public T findById(Long id) {
+        for (T pers : personList) {
+            if (pers.getId().equals(id)) {
                 return pers;
             }
+            //break;
         }
 
-        throw new Exception();
+        return null;
     }
 
 
-    public void remove(Person person) {
-        for (Person pers : personList) {
+    public void remove(T person) {
+        for (T pers : personList) {
             if (pers == person) {
                 personList.remove(person);
             }
@@ -32,7 +37,7 @@ public class People {
     }
 
     public void remove(Long id) {
-        for (Person person : personList) {
+        for (T person : personList) {
             if (person.getId() == id) {
                 personList.remove(id);
             }
@@ -44,14 +49,12 @@ public class People {
         return personList.size();
     }
 
-    public Object[] toArray() {
-
-        return personList.toArray();
-    }
+    public abstract T[] toArray();
 
 
 
-    public void removeAll(){
+
+    public void removeAll() {
         personList.removeAll(personList);
 
     }

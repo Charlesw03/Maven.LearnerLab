@@ -46,9 +46,7 @@ public class TestPeople {
         Long actual = person.getId();
         Assert.assertEquals(expected,actual);
 
-
-
-    }
+}
 
 
 }
